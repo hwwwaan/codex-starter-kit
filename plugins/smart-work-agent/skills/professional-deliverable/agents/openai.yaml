@@ -1,0 +1,6 @@
+interface:
+  display_name: "전문 산출물 제작"
+  short_description: "보고서와 발표자료를 검증된 파일로 완성합니다."
+  default_prompt: "$professional-deliverable로 이 독자에게 맞는 완성도 높은 산출물을 만들고 검증해 주세요."
+policy:
+  allow_implicit_invocation: true

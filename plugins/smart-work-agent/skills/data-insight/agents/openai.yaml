@@ -1,0 +1,6 @@
+interface:
+  display_name: "데이터 분석과 검증"
+  short_description: "데이터 구조를 검증하고 재현 가능하게 분석합니다."
+  default_prompt: "$data-insight로 이 데이터의 품질을 점검하고 재현 가능한 분석 결과를 만들어 주세요."
+policy:
+  allow_implicit_invocation: true

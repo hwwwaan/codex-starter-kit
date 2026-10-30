@@ -1,0 +1,6 @@
+interface:
+  display_name: "의사결정 지원"
+  short_description: "기준과 위험을 비교해 제약 안에서 최적안을 권고합니다."
+  default_prompt: "$decision-support로 이 조건과 위험을 비교해 가장 나은 선택안을 권고해 주세요."
+policy:
+  allow_implicit_invocation: true

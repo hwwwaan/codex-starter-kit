@@ -1,0 +1,6 @@
+interface:
+  display_name: "복합업무 총괄"
+  short_description: "복잡한 업무를 계획부터 실행과 검증까지 책임지고 완주합니다."
+  default_prompt: "$work-orchestrator로 이 복합 요청을 계획하고 실행해 검증된 결과로 완성해 주세요."
+policy:
+  allow_implicit_invocation: true

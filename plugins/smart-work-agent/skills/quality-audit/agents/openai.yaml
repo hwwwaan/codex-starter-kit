@@ -1,0 +1,6 @@
+interface:
+  display_name: "최종 품질감사"
+  short_description: "외부 인도 전 치명적 결함을 독립 감사합니다."
+  default_prompt: "$quality-audit로 이 산출물을 엄격히 감사하고 통과 또는 차단으로 판정해 주세요."
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,6 @@
+interface:
+  display_name: "현장 인터뷰 근거화"
+  short_description: "현장 인터뷰를 설계하고 검증 가능한 근거로 전환합니다."
+  default_prompt: "$field-interview-to-evidence로 현장 인터뷰를 준비하고 답변을 검증 가능한 근거로 정리해 주세요."
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,62 @@
+{
+  "description": "스마트 업무 에이전트의 안전 및 품질 훅",
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup|resume|compact",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"${PLUGIN_ROOT}/hooks/session-start.py\"",
+            "commandWindows": "powershell.exe -NoProfile -ExecutionPolicy Bypass -Command \"& (Join-Path $env:PLUGIN_ROOT 'hooks\\session-start.ps1')\"",
+            "timeout": 15,
+            "statusMessage": "업무 기준을 불러오는 중",
+            "additionalContextLimit": 1800
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"${PLUGIN_ROOT}/hooks/prompt-guard.py\"",
+            "commandWindows": "powershell.exe -NoProfile -ExecutionPolicy Bypass -Command \"& (Join-Path $env:PLUGIN_ROOT 'hooks\\prompt-guard.ps1')\"",
+            "timeout": 15,
+            "statusMessage": "민감정보와 최신성 조건을 확인하는 중",
+            "additionalContextLimit": 1200
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Bash|exec_command|apply_patch|Edit|Write|mcp__.*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"${PLUGIN_ROOT}/hooks/tool-guard.py\"",
+            "commandWindows": "powershell.exe -NoProfile -ExecutionPolicy Bypass -Command \"& (Join-Path $env:PLUGIN_ROOT 'hooks\\tool-guard.ps1')\"",
+            "timeout": 15,
+            "statusMessage": "위험한 변경인지 확인하는 중",
+            "additionalContextLimit": 1000
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"${PLUGIN_ROOT}/hooks/quality-stop.py\"",
+            "commandWindows": "powershell.exe -NoProfile -ExecutionPolicy Bypass -Command \"& (Join-Path $env:PLUGIN_ROOT 'hooks\\quality-stop.ps1')\"",
+            "timeout": 15,
+            "statusMessage": "최종 결과를 한 번 더 검수하는 중"
+          }
+        ]
+      }
+    ]
+  }
+}
